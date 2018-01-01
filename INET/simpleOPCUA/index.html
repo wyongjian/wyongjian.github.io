@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Wang Yongjian, email:blog@wangyongjian">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>OPC UA技术标准简单分析 - Wangongjian's blog</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "OPC UA\u6280\u672f\u6807\u51c6\u7b80\u5355\u5206\u6790";
+    var mkdocs_page_input_path = "INET\\simpleOPCUA.md";
+    var mkdocs_page_url = "/INET/simpleOPCUA/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Wangongjian's blog</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">首页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">工业控制</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="./">Writing Your Docs</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#opc-ua">OPC UA技术标准简单分析</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">工业通讯</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">OPC UA技术标准简单分析</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#opc-ua">OPC UA技术标准简单分析</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../OPCUAX509/">OPC UA安全认证证书分析</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">CNC数控系统</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../CNC/VirtualCNCForTest/">虚拟数控机床测试系统的搭建</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../CNC/NCFileTransferProtocolZModem/">NC代码传输协议详细解析</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../CNC/FanucCNCMonitor/">Fanuc 数控机床联网监控方案分析</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Wangongjian's blog</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>工业通讯 &raquo;</li>
+        
+      
+    
+    <li>OPC UA技术标准简单分析</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="opc-ua">OPC UA技术标准简单分析</h1>
+<p>原创作者：王永建(blog@wangyongjian.cn)</p>
+<p>原文引用地址：https://blog.wangyongjian.cn</p>
+<hr />
+<p>OPC是用于过程控制的OLE技术（OLE for Process Control）的简写，是一种用于工业通讯的标准，由OPC基金会组织管理，其会员包括主流的自动化控制、仪器仪表及过程控制系统的公司。OPC现在分为经典OPC（Classic OPC）和OPC统一架构也就是OPC UA（Unified Architecture）。OPC标准致力于为过程控制和制造自动化系统提供一套统一的通讯接口标准。经典OPC是基于Windows操作系统的OLE/COM技术的，解决了软、硬件厂商的矛盾，实现了系统的无缝集成，提高了系统的开放性和可互操作性。</p>
+<p>经典OPC共发布了1.0，2.0，和3.0几个版本，应用最广泛的2.0版本。但随着技术的发展，经典OPC的局限性也随之暴露出来，1、只能给予Windows平台使用，无法实现跨平台应用；在做分布式应用时的DCOM（分布式COM）效率低，3、无安全认证机制。</p>
+<p>对此OPC基金会发布了新的数据通讯统一方法，OPC统一架构（OPC UA），该标准涵盖了OPC实施数据访问规范（OPC DA），OPC历史数据访问规范(OPC HAD)，OPC报警事件访问规范（OPC A&amp;E）和OPC安全协议（OPC Security）4大规范。</p>
+<p>OPC UA是经典OPC成功发布后的又一次技术突破，为数据采集、信息模型化以及工厂控制层与企业信息管理层提供更加安全、可靠的通讯技术支持。</p>
+<p>OPC UA的技术改进主要有：
+1.  与平台无关，支持跨平台应用，可应用与任何系统上；
+OPC UA软件的开发不再依靠和局限于Windows系统平台，将OPC技术拓展到了Linux、Unix、Mac、Vxworks、Android等各种其它平台。 基于Internet的WebService服务架构和灵活的数据交换系统， OPC UA的发展可面向未来的技术应用。
+2.  配置与维护更加方便
+有效地将现有的规范集成。 OPC UA提供了一致、完整的地址空间和服务模型，解决了过去同一系统的信息不能以统一方式被访问的问题。
+3.  通讯范围更广、通讯性能更强
+OPC UA 规范可以通过任何单一端口进行通信。可穿越防火墙并且提高了传输性能。 同时含有高度可靠性和冗余性的设计。
+4.  通讯更加安全
+OPC UA 访问规范明确提出了标准安全模型， 通过数字证书进行安全认证，每个OPC UA应用都必须执行OPC UA安全协议， 这在提高互通性的同时降低了维护和额外配置费用。 用于OPC UA应用程序之间传递消息的底层通信技术通过证书生成的公用密匙与私用密匙提供了加密功能和标记技术， 保证了消息的完整性，也防止信息的泄漏。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../OPCUAX509/" class="btn btn-neutral float-right" title="OPC UA安全认证证书分析">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="./" class="btn btn-neutral" title="Writing Your Docs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2017 <a href="https://blog.wangyongjian.cn">Wang Yongjian</a>.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="./" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../OPCUAX509/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

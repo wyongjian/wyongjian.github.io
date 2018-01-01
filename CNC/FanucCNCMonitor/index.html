@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Wang Yongjian, email:blog@wangyongjian">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Fanuc 数控机床联网监控方案分析 - Wangongjian's blog</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Fanuc \u6570\u63a7\u673a\u5e8a\u8054\u7f51\u76d1\u63a7\u65b9\u6848\u5206\u6790";
+    var mkdocs_page_input_path = "CNC\\FanucCNCMonitor.md";
+    var mkdocs_page_url = "/CNC/FanucCNCMonitor/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Wangongjian's blog</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">首页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">工业控制</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../INET/simpleOPCUA/">Writing Your Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">工业通讯</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../INET/simpleOPCUA/">OPC UA技术标准简单分析</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../INET/OPCUAX509/">OPC UA安全认证证书分析</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">CNC数控系统</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../VirtualCNCForTest/">虚拟数控机床测试系统的搭建</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../NCFileTransferProtocolZModem/">NC代码传输协议详细解析</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Fanuc 数控机床联网监控方案分析</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#fanuc">Fanuc 数控机床联网监控方案分析</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#rs323">一、RS323接口的数据交换</a></li>
+        
+            <li><a class="toctree-l4" href="#_1">二、以太网接口的数据交换</a></li>
+        
+            <li><a class="toctree-l4" href="#_2">三、小结</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Wangongjian's blog</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>CNC数控系统 &raquo;</li>
+        
+      
+    
+    <li>Fanuc 数控机床联网监控方案分析</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="fanuc">Fanuc 数控机床联网监控方案分析</h1>
+<p>原创作者：王永建(blog@wangyongjian.cn)</p>
+<p>原文引用地址：https://blog.wangyongjian.cn</p>
+<hr />
+<p>目前国内大部分生产加工企业的机床让处于单机运行模式，或者仅在下载NC程序时才偶尔与编程电脑连接，功能也仅限于下载NC程序。对于一些部署了DNC系统的机床设备往往也仅是实现了NC代码的远程下载，不能对机床的运行状态进行监控和动静态数据采集管理，无法实现集成管理，从而形成了信息化孤岛。随着生产信息化进程的推进，对数控设备进行信息化统一集中管理乃至对机床工作状态进行实时监控就变得尤为重要。本文以FANUC 系统为例探讨数控机床信息化的可行技术方案。</p>
+<p>Fanuc数控系统与外部实现数据交换的途径有：
+  * 通过数控系统集成的RS232C通讯接口
+  * 存储卡
+  * 磁带
+  * 以太网</p>
+<p>等方式。</p>
+<p>上述数据交换方式中采用存储卡和磁带的方式仅能实现数据的转移无法实现联网通讯，此文不做讨论。本文重点讨论通过RS232接口和以太网接口的通讯方案。</p>
+<h2 id="rs323">一、RS323接口的数据交换</h2>
+<p>RS232是Fanuc数据系统标配的集成通讯接口，可用于实现NC程序的下载、CNC参数的备份与恢复、PMC（Programmable Machine Controller）参数的备份与恢复、传输及在线监视PLC梯形图程序、宏指令打印等。
+ <img alt="" src="../FanucRS232.png" /></p>
+<p>图1.数控背板接口示意图</p>
+<p>Fanuc数控系统中的标配的RS232C接口为JD36A、JD36B共2个。通常RS232接口用于DNC系统的NC程序下载，通过串口服务器接入以太网网络。</p>
+<p>对于只有RS232接口的数控机床设备可以通过以下方法实现对机床设备联网及状态监控：
+1.通过RS232接口实现程序传输，通过远程IO采集器采集机床的工作状态信号；</p>
+<p>此方法保留现有DNC的功能，通过IO采集模块采集机床相关执行设备的动作执行状态，通常仅能采集开机、停机、故障的硬件状态信息。此方法需要对机床电控部分进行布线，且能采集的状态信号极少。</p>
+<p>2.同RS232接口实现程序传输，通过在NC代码中添加宏指令发当前的程序执行状态通过RS232接口发送给上位管理计算机完成对机床设备的状态监控。</p>
+<p>此方法不需要对机床进行硬件改造，仅在NC代码中加入宏指令，宏指令将状态信息通过RS232接口发送。但是次方案需要在每个NC代码中按照预定要求加入预定的宏指令。如NC代码中未添加相关的宏指令，状态监视功能将失效，且通过此方法只能实现对代码执行状态进行监视。</p>
+<p>3.系统集成的RS232接口还可以在线监视PLC的梯形图运行状态，通过此功能可以实现对PLC内部所有寄存器的监视。可以通过此功能通过监视PLC的状态从而实现对数控机床实现运行状态监控和动态数据分析。</p>
+<p>此方法可实现的功能最为丰富，但需要对PLC通讯协议进行解析，由于Fanuc未公开数控系统的PLC协议，需要通过在线分析相关传输数据对协议进行解析，也存在一定的工作量。</p>
+<h2 id="_1">二、以太网接口的数据交换</h2>
+<p>较新的Fanuc 数控系统都配备的以太网接口，FANUC 系列数控系统的以太网硬件设备主要有快速以太网板（Fast Ethernet Board）和数据服务器板（Fast Data Server Board）两种，对应功能叫做以太网功能（Ethernet Function）和数据服务器功能（DateServer Function） 。现0i － MD 和0i － TD 系统都标配有内嵌式以太网和PCMCIA 网卡，而0i － Mate MD和0i － Mate TD 只标配PCMCIA 网卡。PCMCIA 网卡和内嵌式以太网的功能接近，只是PCMCIA 网卡不支持FANUC 程序传输软件。
+ <img alt="" src="../FanucNIC.png" />
+图2.Fanuc几种网卡功能对比</p>
+<p>将数控机床通过以太网与电脑连接起来，即可进行NC 程序的传输、机械的控制和运行状态的监视、机械的调整和维护。</p>
+<p>通过以太网实现对数控设备的联网及远程监视功能可通过购买Fanuc提供的一些了管理软件实现，也可以通过Fanuc公司提供的FOCAS应用程序接口（API）进行自主编程。通过该通讯接口可实现的功能包括机床数据管理（如NC 程序、系统参数、宏变量、刀具偏置、工件坐标系偏移、螺距误差补偿等数据的读写及管理） 、CNC 显示（如主轴和进给轴数据显示、加工时间、刀具信息、坐标数据） 、状态监测（如梯形图顺序程序、机床信号、进给轴及主轴波形信号、操作及报警履历） 、在线调试（如融合FANUC LADDER和SERVO GUIDE 进行在线PMC 和伺服调试）等。
+基于以太网的数控机床可以实现最为丰富的附件功能，适用于采用较新数控系统的机床设备。</p>
+<h2 id="_2">三、小结</h2>
+<p>随着工业信息化进程的推进，对数控设备进行信息化统一集中管理乃至对机床工作状态进行实时监控的需求也更加强烈。本文分析集中Fuanc数控系统可行的联网监控方案，使传统的DNC 系统上增加了设备状态采集、车间工况数据采集和生产数据交换功能，实现制造企业对数控机床的集成管理。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../NCFileTransferProtocolZModem/" class="btn btn-neutral" title="NC代码传输协议详细解析"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2017 <a href="https://blog.wangyongjian.cn">Wang Yongjian</a>.</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../NCFileTransferProtocolZModem/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
