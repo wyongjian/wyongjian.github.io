@@ -8,7 +8,7 @@
   
   <meta name="author" content="Wang Yongjian, email:blog@wangyongjian">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>OPC UA技术标准简单分析 - Wangongjian's blog</title>
+  <title>狼性文化 - Wangongjian's blog</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "OPC UA\u6280\u672f\u6807\u51c6\u7b80\u5355\u5206\u6790";
-    var mkdocs_page_input_path = "INET\\simpleOPCUA.md";
-    var mkdocs_page_url = "/INET/simpleOPCUA/";
+    var mkdocs_page_name = "\u72fc\u6027\u6587\u5316";
+    var mkdocs_page_input_path = "Idear\\TheCultureOfWolf.md";
+    var mkdocs_page_url = "/Idear/TheCultureOfWolf/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -56,19 +56,13 @@
 		
     <span class="caption-text">工业通讯</span>
     <ul class="subnav">
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">OPC UA技术标准简单分析</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#opc-ua">OPC UA技术标准简单分析</a></li>
-    
-
-    </ul>
+    <a class="" href="../../INET/simpleOPCUA/">OPC UA技术标准简单分析</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../OPCUAX509/">OPC UA安全认证证书分析</a>
+    <a class="" href="../../INET/OPCUAX509/">OPC UA安全认证证书分析</a>
                 </li>
     </ul>
 	    </li>
@@ -150,19 +144,25 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../Idear/ProductPackage/">产品包装</a>
+    <a class="" href="../ProductPackage/">产品包装</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../Idear/SwimToUpstream/">拼搏，目标上游</a>
+    <a class="" href="../SwimToUpstream/">拼搏，目标上游</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">狼性文化</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">狼性文化</a></li>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
-    <a class="" href="../../Idear/TheCultureOfWolf/">狼性文化</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../Idear/DisruptiveTheTime/">颠覆的时代</a>
+    <a class="" href="../DisruptiveTheTime/">颠覆的时代</a>
                 </li>
     </ul>
 	    </li>
@@ -189,11 +189,11 @@
     
       
         
-          <li>工业通讯 &raquo;</li>
+          <li>所思所想 &raquo;</li>
         
       
     
-    <li>OPC UA技术标准简单分析</li>
+    <li>狼性文化</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -203,23 +203,30 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="opc-ua">OPC UA技术标准简单分析</h1>
+                <h1 id="_1">狼性文化</h1>
 <p>原创作者：王永建(blog@wangyongjian.cn)</p>
 <p>原文引用地址：https://blog.wangyongjian.cn</p>
 <hr />
-<p>OPC是用于过程控制的OLE技术（OLE for Process Control）的简写，是一种用于工业通讯的标准，由OPC基金会组织管理，其会员包括主流的自动化控制、仪器仪表及过程控制系统的公司。OPC现在分为经典OPC（Classic OPC）和OPC统一架构也就是OPC UA（Unified Architecture）。OPC标准致力于为过程控制和制造自动化系统提供一套统一的通讯接口标准。经典OPC是基于Windows操作系统的OLE/COM技术的，解决了软、硬件厂商的矛盾，实现了系统的无缝集成，提高了系统的开放性和可互操作性。</p>
-<p>经典OPC共发布了1.0，2.0，和3.0几个版本，应用最广泛的2.0版本。但随着技术的发展，经典OPC的局限性也随之暴露出来，1、只能给予Windows平台使用，无法实现跨平台应用；在做分布式应用时的DCOM（分布式COM）效率低，3、无安全认证机制。</p>
-<p>对此OPC基金会发布了新的数据通讯统一方法，OPC统一架构（OPC UA），该标准涵盖了OPC实施数据访问规范（OPC DA），OPC历史数据访问规范(OPC HAD)，OPC报警事件访问规范（OPC A&amp;E）和OPC安全协议（OPC Security）4大规范。</p>
-<p>OPC UA是经典OPC成功发布后的又一次技术突破，为数据采集、信息模型化以及工厂控制层与企业信息管理层提供更加安全、可靠的通讯技术支持。</p>
-<p>OPC UA的技术改进主要有：
-1.  与平台无关，支持跨平台应用，可应用与任何系统上；
-OPC UA软件的开发不再依靠和局限于Windows系统平台，将OPC技术拓展到了Linux、Unix、Mac、Vxworks、Android等各种其它平台。 基于Internet的WebService服务架构和灵活的数据交换系统， OPC UA的发展可面向未来的技术应用。
-2.  配置与维护更加方便
-有效地将现有的规范集成。 OPC UA提供了一致、完整的地址空间和服务模型，解决了过去同一系统的信息不能以统一方式被访问的问题。
-3.  通讯范围更广、通讯性能更强
-OPC UA 规范可以通过任何单一端口进行通信。可穿越防火墙并且提高了传输性能。 同时含有高度可靠性和冗余性的设计。
-4.  通讯更加安全
-OPC UA 访问规范明确提出了标准安全模型， 通过数字证书进行安全认证，每个OPC UA应用都必须执行OPC UA安全协议， 这在提高互通性的同时降低了维护和额外配置费用。 用于OPC UA应用程序之间传递消息的底层通信技术通过证书生成的公用密匙与私用密匙提供了加密功能和标记技术， 保证了消息的完整性，也防止信息的泄漏。</p>
+<p>[1]所谓的“狼性文化”指的是企业文化中一枝独秀的创举，是一种带有野性的拼搏精神。狼其性也：野、残、贪、暴。都应在团队文化中得以再现，那就是对工作、对事业要有“贪性”，永无止境地去拼搏、探索。
+提到狼性文化会让我很自然的联想到华为，其所拥有的对客户、对市场敏锐的嗅觉，不屈不饶、奋斗精神，群体奋斗、人人平等，都具有狼群的典型特征。其敏锐的洞察力可抓住市场先机、掌控主动权，在市场竞争中不屈不饶、不言放弃方可不断超越对手、突出重围、独占鳌头，企业是个集体，唯有全体奋斗方可辉煌发达。</p>
+<p>在今年拜读了姜戎的《狼图腾》了感触颇深，虽然其在书中所描述的狼文化得到了很多人的质疑，但其揭示狼性值得深思：</p>
+<p><strong>狼是智慧的</strong></p>
+<p>这一点书中的描述淋漓尽致，狼（群）每一次准备都精心策划、准备充足，踩点、跟踪、埋伏、进攻、围堵，每一步都组织严密，有章有法。</p>
+<p><strong>狼是团结的</strong></p>
+<p>每次行动都有狼王统一指挥调度、绝不会各自为战，即使被牧民和猎狗围困时，依然镇定自若，不乱阵型。</p>
+<p><strong>狼是勇敢的</strong></p>
+<p>从来不惧死亡，视死如归、不屈不饶，进攻中前仆后继，即便是战斗的最后时刻也不会畏惧</p>
+<p>我所理解的狼性文化可概括为学习进取、创新突围、利益共享、团结平等。</p>
+<p><strong>学习进取</strong></p>
+<p>深入了解行业需求，需要不断的追求，依靠点点滴滴、持之以恒的艰苦前进，实现顾客梦想，才有可能在行业内扎根成为行业领先企业；</p>
+<p><strong>创新突围</strong></p>
+<p>要求企业重视技术、虚心向优秀企业学习，发挥潜能、不断突破自我，独立自主的、创造性地发展自有核心技术和产品系列；</p>
+<p><strong>利益共享</strong></p>
+<p>我个人主张将用户、员工和合作者结成利益共同体，通过集体共同努力达到用户满意、员工满意和合作者满意。</p>
+<p><strong>团结平等</strong></p>
+<p>要重视集体中的每一个个体（员工），同甘共苦，荣辱与共，让人人拥有使命感，心中充满愿景。不搞特权，成功是集体共同分享，失败是集体共同分担。团结协作、集体奋斗是企业文化的灵魂。</p>
+<p>企业要想能在激烈的市场竞争中胜出，如能恰如其当的将狼性文化特性融入到核心文化之中，势必会形成企业特有的狼性文化。特别是在处于竞争劣势的环境中，而又必须在市场竞争中生存的时刻，狼性文化可发挥奇效，构成实用、有效的特殊竞争力。但是只有狼性是不够的，对外的残酷需要对内的高度团结，企业文化的润滑功能将会起到微妙的作用，使我们的团队更具战斗力。</p>
+<p>[1].引用自百度百科</p>
               
             </div>
           </div>
@@ -227,10 +234,10 @@ OPC UA 访问规范明确提出了标准安全模型， 通过数字证书进行
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../OPCUAX509/" class="btn btn-neutral float-right" title="OPC UA安全认证证书分析">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../DisruptiveTheTime/" class="btn btn-neutral float-right" title="颠覆的时代">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../.." class="btn btn-neutral" title="首页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../SwimToUpstream/" class="btn btn-neutral" title="拼搏，目标上游"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -258,10 +265,10 @@ OPC UA 访问规范明确提出了标准安全模型， 通过数字证书进行
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../SwimToUpstream/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../OPCUAX509/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../DisruptiveTheTime/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -8,7 +8,7 @@
   
   <meta name="author" content="Wang Yongjian, email:blog@wangyongjian">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>OPC UA技术标准简单分析 - Wangongjian's blog</title>
+  <title>对物料编码的理解 - Wangongjian's blog</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "OPC UA\u6280\u672f\u6807\u51c6\u7b80\u5355\u5206\u6790";
-    var mkdocs_page_input_path = "INET\\simpleOPCUA.md";
-    var mkdocs_page_url = "/INET/simpleOPCUA/";
+    var mkdocs_page_name = "\u5bf9\u7269\u6599\u7f16\u7801\u7684\u7406\u89e3";
+    var mkdocs_page_input_path = "MES\\thinkofMaterialcode.md";
+    var mkdocs_page_url = "/MES/thinkofMaterialcode/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -56,19 +56,13 @@
 		
     <span class="caption-text">工业通讯</span>
     <ul class="subnav">
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">OPC UA技术标准简单分析</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#opc-ua">OPC UA技术标准简单分析</a></li>
-    
-
-    </ul>
+    <a class="" href="../../INET/simpleOPCUA/">OPC UA技术标准简单分析</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../OPCUAX509/">OPC UA安全认证证书分析</a>
+    <a class="" href="../../INET/OPCUAX509/">OPC UA安全认证证书分析</a>
                 </li>
     </ul>
 	    </li>
@@ -96,9 +90,15 @@
 		
     <span class="caption-text">MES及智能制造</span>
     <ul class="subnav">
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../MES/thinkofMaterialcode/">对物料编码的理解</a>
+    <a class="current" href="./">对物料编码的理解</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">对物料编码的理解</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -189,11 +189,11 @@
     
       
         
-          <li>工业通讯 &raquo;</li>
+          <li>MES及智能制造 &raquo;</li>
         
       
     
-    <li>OPC UA技术标准简单分析</li>
+    <li>对物料编码的理解</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -203,23 +203,31 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="opc-ua">OPC UA技术标准简单分析</h1>
+                <h1 id="_1">对物料编码的理解</h1>
 <p>原创作者：王永建(blog@wangyongjian.cn)</p>
 <p>原文引用地址：https://blog.wangyongjian.cn</p>
 <hr />
-<p>OPC是用于过程控制的OLE技术（OLE for Process Control）的简写，是一种用于工业通讯的标准，由OPC基金会组织管理，其会员包括主流的自动化控制、仪器仪表及过程控制系统的公司。OPC现在分为经典OPC（Classic OPC）和OPC统一架构也就是OPC UA（Unified Architecture）。OPC标准致力于为过程控制和制造自动化系统提供一套统一的通讯接口标准。经典OPC是基于Windows操作系统的OLE/COM技术的，解决了软、硬件厂商的矛盾，实现了系统的无缝集成，提高了系统的开放性和可互操作性。</p>
-<p>经典OPC共发布了1.0，2.0，和3.0几个版本，应用最广泛的2.0版本。但随着技术的发展，经典OPC的局限性也随之暴露出来，1、只能给予Windows平台使用，无法实现跨平台应用；在做分布式应用时的DCOM（分布式COM）效率低，3、无安全认证机制。</p>
-<p>对此OPC基金会发布了新的数据通讯统一方法，OPC统一架构（OPC UA），该标准涵盖了OPC实施数据访问规范（OPC DA），OPC历史数据访问规范(OPC HAD)，OPC报警事件访问规范（OPC A&amp;E）和OPC安全协议（OPC Security）4大规范。</p>
-<p>OPC UA是经典OPC成功发布后的又一次技术突破，为数据采集、信息模型化以及工厂控制层与企业信息管理层提供更加安全、可靠的通讯技术支持。</p>
-<p>OPC UA的技术改进主要有：
-1.  与平台无关，支持跨平台应用，可应用与任何系统上；
-OPC UA软件的开发不再依靠和局限于Windows系统平台，将OPC技术拓展到了Linux、Unix、Mac、Vxworks、Android等各种其它平台。 基于Internet的WebService服务架构和灵活的数据交换系统， OPC UA的发展可面向未来的技术应用。
-2.  配置与维护更加方便
-有效地将现有的规范集成。 OPC UA提供了一致、完整的地址空间和服务模型，解决了过去同一系统的信息不能以统一方式被访问的问题。
-3.  通讯范围更广、通讯性能更强
-OPC UA 规范可以通过任何单一端口进行通信。可穿越防火墙并且提高了传输性能。 同时含有高度可靠性和冗余性的设计。
-4.  通讯更加安全
-OPC UA 访问规范明确提出了标准安全模型， 通过数字证书进行安全认证，每个OPC UA应用都必须执行OPC UA安全协议， 这在提高互通性的同时降低了维护和额外配置费用。 用于OPC UA应用程序之间传递消息的底层通信技术通过证书生成的公用密匙与私用密匙提供了加密功能和标记技术， 保证了消息的完整性，也防止信息的泄漏。</p>
+<p>物料编码在百度百科的解释是这样的</p>
+<blockquote>
+<p>“物料编码是唯一标识物料的代码，通常用字符串（定长或不定长）或数字表示。物料编码是计算机系统对物料的惟一识别代码。它用一组代码来代表一种物料。物料编码必须是惟一的，也就是，一种物料不能有多个物料编码，一个物料编码不能有多种物料。”</p>
+</blockquote>
+<hr />
+<p>&emsp;&emsp;如果我们在销售苹果公司手机产品，那么物料编码可能意义不大，在售产品屈指可数，但如果我们销售的是三星或者华为这类采用机海战术公司的手机时可能就需要一个简单的产品清单了，而对于这些产品的制造企业而言，物料管理就不这么简单了。数以万计种的物料，如果没有可做唯一标识的物料代号，而仅靠物料名称或者其它特性为依据，很难想象企业能合理的管理物料。物料的名称、规格等都不能作为区别物料的标识，同名同规格的物料总是可能存在的。要实现物料的科学管理，物料编码是基础。</p>
+<p>&emsp;&emsp;物料编码是以特定的字符、符号或数字组合来代表物料、品名、规格、类别及其它特有属性的一种管理工具。如上文提到的销售手机的例子在物料比较单纯、物料种很少的情况下有没有物料编码可能无关紧要，但在物料多到数百种或数千、数万种以上时，物料编码就显出其必要性了。在物料的领发、验收，请购、盘点、储存等工作频紧进行时，如能借助物料编码，可使各部门提高效率，提高物料数据传递迅速、沟通更加容易。采用物料编码可实现：</p>
+<p>1.<strong>增强物料数据的正确性； </strong> </p>
+<p>&emsp;&emsp;物料的领发、验收、请购、盘点、储存等物料的一切活动均有物料编码可跟踪。物料数据正确后可避免一物多名，一名多物或物名错乱之现象的发生。</p>
+<p>2.<strong>便于物料管理、提高效率； </strong> </p>
+<p>&emsp;&emsp;以物料编码代替文字的描述，使物料有序排列，物料管理简便省事，效率因此提高。</p>
+<p>3.<strong>利于计算机的管理； </strong></p>
+<p>&emsp;&emsp;不管是ERP系统、PLM系统、SCM系统还是MES系统，都涉及到物料，只有在推行物料编码后，这些系统才能在更大程度上发挥各自的使用效果。</p>
+<p>4.<strong>便于物料的仓储管理;</strong>  </p>
+<p>&emsp;&emsp;物料编码利于对物料库存量的管理控制，防止呆料的存在，降低库存，提高周转流动，从而可减轻资金的占用，降低成本。</p>
+<p>5.<strong>防止物料舞弊事件之发生；</strong>  </p>
+<p>&emsp;&emsp;物料一经编码后，物料记录正确而迅速，物料储存井然有序，可以防止误领、多领的舞弊事件之发生。</p>
+<p>6.<strong>便于物料领用、发料管理；</strong>  </p>
+<p>&emsp;&emsp;科学合理的物料编码，可方便用料部门的领用以及物料仓库的发料管理.</p>
+<p>7.<strong>有助于压缩物料的品种、规格。</strong>  </p>
+<p>&emsp;&emsp;物料编码可帮助对某些性能相近或者相同的物料进行合并和简化，减少物料的品种、规格。</p>
               
             </div>
           </div>
@@ -227,10 +235,10 @@ OPC UA 访问规范明确提出了标准安全模型， 通过数字证书进行
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../OPCUAX509/" class="btn btn-neutral float-right" title="OPC UA安全认证证书分析">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../Database/OracleODPForNet/" class="btn btn-neutral float-right" title="不安装客户端连接ORACLE数据库">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../.." class="btn btn-neutral" title="首页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../CNC/FanucCNCMonitor/" class="btn btn-neutral" title="Fanuc 数控机床联网监控方案分析"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -258,10 +266,10 @@ OPC UA 访问规范明确提出了标准安全模型， 通过数字证书进行
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../CNC/FanucCNCMonitor/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../OPCUAX509/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../Database/OracleODPForNet/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
