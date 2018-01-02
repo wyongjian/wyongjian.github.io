@@ -26,6 +26,17 @@
   <script src="../../js/modernizr-2.8.3.min.js"></script>
   <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
   
+  
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?88fa97e58700853ce6c7b9899524e14a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -205,7 +216,7 @@
               
                 <h1 id="opc-ua">OPC UA安全认证证书分析</h1>
 <p>原创作者：王永建(blog@wangyongjian.cn)</p>
-<p>原文引用地址：https://blog.wangyongjian.cn</p>
+<p>原文引用地址：blog.wangyongjian.cn</p>
 <hr />
 <p>证书是由CA（数字证书认证机构）认证、签发及管理的、实现身份识别和电子信息加密，为网络上通信双方提供电子认证，其包含的公匙和私匙是所有者的网络识别信息。这里需要说明的是CA并不一定是一个组织机构，也可以是一个自然人。</p>
 <p>证书包含CA信息、公匙用户（证书所有者）信息、公匙、有效期等信息，目前，证书的普遍遵守由国际电信联盟（ITU-T）制定的X.509数字证书标准。OPC UA标准中安全认证采用的就是x.509格式的证书。X.509共发布了3个版本，目前应用最多的是V1版和最新的V3版，V2版应用较少。</p>
