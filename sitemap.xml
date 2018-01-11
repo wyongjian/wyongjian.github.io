@@ -4,7 +4,7 @@
     
     <url>
      <loc>http://blog.wangyongjian.cn/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,13 +13,19 @@
         
     <url>
      <loc>http://blog.wangyongjian.cn/INET/simpleOPCUA/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/INET/OPCUAX509/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://blog.wangyongjian.cn/INET/CP341ModBusFull/</loc>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -29,19 +35,19 @@
         
     <url>
      <loc>http://blog.wangyongjian.cn/CNC/VirtualCNCForTest/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/CNC/NCFileTransferProtocolZModem/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/CNC/FanucCNCMonitor/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -51,7 +57,7 @@
         
     <url>
      <loc>http://blog.wangyongjian.cn/MES/thinkofMaterialcode/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -61,7 +67,13 @@
         
     <url>
      <loc>http://blog.wangyongjian.cn/Database/OracleODPForNet/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://blog.wangyongjian.cn/Database/LabVIEWAndSQLite/</loc>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -71,13 +83,23 @@
         
     <url>
      <loc>http://blog.wangyongjian.cn/IS/X509ForOPCUA/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/IS/IndustrialEnterpriseInformationSecurity/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://blog.wangyongjian.cn/Control/ControlForGranulator/</loc>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -87,13 +109,13 @@
         
     <url>
      <loc>http://blog.wangyongjian.cn/PrivateOpinions/StartUseEffevo/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/PrivateOpinions/HowToShowPPT/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -103,25 +125,25 @@
         
     <url>
      <loc>http://blog.wangyongjian.cn/Idear/ProductPackage/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/Idear/SwimToUpstream/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/Idear/TheCultureOfWolf/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://blog.wangyongjian.cn/Idear/DisruptiveTheTime/</loc>
-     <lastmod>2018-01-10</lastmod>
+     <lastmod>2018-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
