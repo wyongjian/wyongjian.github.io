@@ -243,23 +243,23 @@ var _hmt = _hmt || [];
 <p>原创作者：王永建(blog@wangyongjian.cn)</p>
 <p>原文引用地址：blog.wangyongjian.cn               </p>
 <hr />
-<p><strong>【摘要】</strong>
- 本文介绍了LabVIEW环境下利用API技术访问开源数据库SQLite的方法，实现了可跨平台操作的数据库。采用此种方法完成了对过程控制中历史数据的保存、数据分析等数据库访问管理，并取得了较好的效果。
-<strong>【关键字】</strong>
-LabVIEW SQLite 数据库 Vxworks 跨平台数据库</p>
+<p><strong>【摘要】</strong></p>
+<p>本文介绍了LabVIEW环境下利用API技术访问开源数据库SQLite的方法，实现了可跨平台操作的数据库。采用此种方法完成了对过程控制中历史数据的保存、数据分析等数据库访问管理，并取得了较好的效果。</p>
+<p><strong>【关键字】</strong></p>
+<p>LabVIEW SQLite 数据库 Vxworks 跨平台数据库</p>
 <p>利用LabVIEW开发应用软件时经常需要对数据库访问，尤其是在过程控制中要大量保存历史数据。通过数据库访问技术，用户可以方便的创建一个使用数据库来管理大量数据，存储过程数据并且能够分析过程结果的自动控制系统。但是LabVIEW本身并不具备数据库访问功能。据作者所知，目前常见的解决这个问题的工具包都是利用LabVIEW的ActiveX功能，把调用Microsoft ADO控件，和SQL语言对数据库的访问进行了不同程度封装。 使得即使不了解Microsoft ADO控件以及SQL语言也可以操作数据库。</p>
 <p>由于这些工具包都是基于ADO控件的，而ADO是Windows系统的一个数据库访问控件，只能运行在Windows平台上，并不支持跨平台应用。作者近来在做的一个项目用的是Vxworks的系统环境，现有的数据库工具包不在适用。在这里我们引入了SQLite数据库。</p>
 <h2 id="1sqlite"><strong>1.SQLite数据库简介</strong></h2>
-<p>SQLite第一个Alpha版本诞生于2000年5月。 SQLite是一款轻型的开源数据库、遵守ACID的关联式数据库管理系统，它的设计目标是嵌入式的，而且目前已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix/Vxworks等主流的操作系统，同时能够跟很多程序语言相结合，比如Tcl、C#、PHP、Java等，同样比起Mysql、PostgreSQL这两款开源世界著名的数据库管理系统来讲，它的处理速度比他们都快。更多介绍可访问其官方网站Http://www.sqlite.org
-<strong>1.1 SQLite数据库特性</strong>
-a.  零配置：不用安装和管理配置。并且独立，不需要额外依赖，只要有一个编译好的动态库文件即可。
+<p>SQLite第一个Alpha版本诞生于2000年5月。 SQLite是一款轻型的开源数据库、遵守ACID的关联式数据库管理系统，它的设计目标是嵌入式的，而且目前已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix/Vxworks等主流的操作系统，同时能够跟很多程序语言相结合，比如Tcl、C#、PHP、Java等，同样比起Mysql、PostgreSQL这两款开源世界著名的数据库管理系统来讲，它的处理速度比他们都快。更多介绍可访问其官方网站Http://www.sqlite.org</p>
+<p><strong>1.1 SQLite数据库特性</strong></p>
+<p>a.  零配置：不用安装和管理配置。并且独立，不需要额外依赖，只要有一个编译好的动态库文件即可。
 b.  存储在单一文件中的完整数据库，而且不受不同操作系统字节顺序的影响；数据库转移不需要格式转换。
 c.  支持SQL语言，数据库操作简单，方便程序移植。
 d.  数据库可以很大，最大可以到2TB。虽然不可能会用的那么大。起码没有以前遇到的2GB的限制。
 e.  提供完整的API应用。使用简单。提供源代码，可以根据需要重编译应用于其他平台。</p>
 <h2 id="2labviewsqlite"><strong>2.通过LabVIEW对SQLite数据库访问操作</strong></h2>
-<p>SQLite数据库提供了完成的API接口，我们这里通过LabVIEW的API接口功能（调用库函数节点）来实现对SQLite数据库的操作。这里我们需要一个已编译的动态链接库。由于SQLite是开源的，其源代码可以通过www.sqlite.org上去下载，并根据运行目标编译不同的动态链接库。这里需要强调的是由于我们的开发平台是Windows系统，需要同时编一个可用于Windows系统的动态链接库DLL。以便开发使用和调试。
-<strong>2.1 SQLite数据的基本操作流程</strong></p>
+<p>SQLite数据库提供了完成的API接口，我们这里通过LabVIEW的API接口功能（调用库函数节点）来实现对SQLite数据库的操作。这里我们需要一个已编译的动态链接库。由于SQLite是开源的，其源代码可以通过www.sqlite.org上去下载，并根据运行目标编译不同的动态链接库。这里需要强调的是由于我们的开发平台是Windows系统，需要同时编一个可用于Windows系统的动态链接库DLL。以便开发使用和调试。</p>
+<p><strong>2.1 SQLite数据的基本操作流程</strong></p>
 <p><img alt="SQLite数据库操作基本步骤" src="../LabVIEWAndSQLite1.png" /></p>
 <p>一次完成的SQLite数据库操作包括
 1、打开（没有为自动新建）数据库；
@@ -275,8 +275,8 @@ const char *filename,   /* Database filename (UTF-8) */
 sqlite3 **ppDb  /* OUT: SQLite db handle */
 );
 </code></pre>
-<p>filename是用这个函数开始数据库操作,需要传入的参数是数据库文件的完整路径，比如：c:\Test_Database.db。字符串编码必须中UTF格式，负责路径中不能包含中文。
-<strong> 注：</strong>文件名不需要一定存在，如果此文件不存在，SQLite会自动建立它。如果它存在，就尝试把它当数据库文件来打开。</p>
+<p>filename是用这个函数开始数据库操作,需要传入的参数是数据库文件的完整路径，比如：c:\Test_Database.db。字符串编码必须中UTF格式，负责路径中不能包含中文。</p>
+<p><strong> 注：</strong>文件名不需要一定存在，如果此文件不存在，SQLite会自动建立它。如果它存在，就尝试把它当数据库文件来打开。</p>
 <p>sqlite3 ** 返回的是数据库的操作句柄（引用），是一个32位有符号整型数据。</p>
 <p>函数返回值表示操作是否正确，如果返回SQLITE_OK（0） 则表示操作正常。</p>
 <p><img alt="SQLite数据库操作基本步骤" src="../LabVIEWAndSQLite2.png" /></p>
@@ -315,8 +315,8 @@ sqlite3 **ppDb  /* OUT: SQLite db handle */
 4. sqlite3_column_bytes() 用来返回 UTF-8 编码的BLOBs列的字节数或者TEXT字符串的字节数。
 5.  sqlite3_column_text() 返回 UTF-8 编码的 TEXT 数据。
 6. 不一定非要按照sqlite3_column_type()接口返回的数据类型来获取数据. 数据类型不同时软件将自动转换.</p>
-<p><strong>2.3.3.    结束SQL语句</strong>
-在数据库关闭之前，所有准备好的声明都必须被释放销毁。在执行了sqlite3_prepare()函数之后，任何时候都可以通过调用 sqlite3_finalize() 将一个准备好的SQL声明销毁。</p>
+<p><strong>2.3.3.    结束SQL语句</strong></p>
+<p>在数据库关闭之前，所有准备好的声明都必须被释放销毁。在执行了sqlite3_prepare()函数之后，任何时候都可以通过调用 sqlite3_finalize() 将一个准备好的SQL声明销毁。</p>
 <p>sqlite3_finalize()函数原型：</p>
 <pre><code>int sqlite3_finalize(sqlite3_stmt*)；
 </code></pre>
